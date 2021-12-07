@@ -1,0 +1,328 @@
+@charset "UTF-8";
+@import "./utils/_utils.scss";
+
+@mixin header($language) {
+  // * ==========================================================================
+  // * HEADER 區塊
+  // * ==========================================================================
+
+  #header {
+    width: 100%;
+    position: relative;
+
+    @include min-width(769px) {
+      height: 100%;
+    }
+  }
+
+  // * ==========================================================================
+  // * LOGO
+  // * ==========================================================================
+
+  .logo {
+    width: 187px;
+    height: 40px;
+    display: block;
+    margin-left: 5px;
+    position: relative;
+
+    > a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      color: $color-white;
+      background: url("../images/icon/logo_white.svg") no-repeat center/contain;
+
+      @include hidetext;
+    }
+
+    @include min-width(1025px) {
+      width: 242px;
+      height: 70px;
+      margin-left: 0px;
+    }
+  }
+
+	.logo-menu {
+    width: 187px;
+    height: 40px;
+    display: block;
+    margin-left: 5px;
+    position: relative;
+
+    > a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      color: $color-white;
+      background: url("../images/icon/logo_white.svg") no-repeat center/contain;
+
+      @include hidetext;
+    }
+
+    @include min-width(1025px) {
+      width: 242px;
+      height: 70px;
+      margin-left: 28px;
+    }
+  }
+
+  // * ==========================================================================
+  // * Menu
+  // * ==========================================================================
+  .b-a {
+    transition: all 0.25s;
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 40px;
+    background-color: $color-white;
+  }
+
+  .btn-menu {
+    width: 70px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 45px;
+    z-index: 10002;
+    cursor: pointer;
+  }
+
+	.menu-content {
+		width: 420px;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: -420px;
+		z-index: 10003;
+		background-color: #000;
+		transition: all 0.25s;
+
+		&.open {
+			left: 0px;
+			transition: all 0.25s;
+		}
+	}
+
+	.menu-wrap{
+		padding-top: 43px;
+		padding-left: 70px;
+
+		>ul{
+			width: 100%;
+			height: calc(100vh - 200px);
+			margin-top: 73.31px;
+			padding-left: 72px;
+			overflow-y: auto;
+		}
+		.menu-item{
+			position: relative;
+			margin-bottom: 25px;
+			transition: .2s;
+
+			&::after{
+				content: "";
+				display: block;
+				width: 17px;
+				height: 17px;
+				margin-top: -8.5px;
+				position: absolute;
+				top: 50%;
+				left: -44px;
+				background: url("../images/icon/item_white.svg") no-repeat center/contain;
+				opacity: 0;
+				transition: .2s;
+			}
+
+			@include min-width(1025px) {
+
+				&:hover{
+					&::after{
+						opacity: 1;
+					}
+				}
+			}
+
+			&:last-child{
+				margin-bottom: 0;
+			}
+
+			>a{
+				width: 100%;
+				height: 100%;
+				display: block;
+	
+				>span{
+					width: 100%;
+					height: 100%;
+					display: block;
+					font-size: map-get($fontsize, 6);
+					color: $color-white;
+					@include roboto-txt;
+	
+					&.menu-item-title{
+						font-size: map-get($fontsize, 2);
+					}
+				}
+			}
+		}
+	}
+
+
+
+	.menu-nav{
+		width: 70px;
+    height: 100%;
+    padding: 0 0 7vh;
+    padding-top: 5vh;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+		border-right: 1px solid $color-white;
+    background-color: $color-black;
+	}
+
+  .menu {
+    @extend .b-a;
+    position: absolute;
+    z-index: 10002;
+
+    &:before {
+      @extend .b-a;
+      top: -12px;
+    }
+    &:after {
+      @extend .b-a;
+      top: 12px;
+    }
+  }
+
+	.menu2 {
+    @extend .b-a;
+    position: absolute;
+		background-color: transparent;
+    z-index: 10002;
+
+    &:before {
+      @extend .b-a;
+      top: 0;
+        transform: rotate(45deg);
+    }
+    &:after {
+      @extend .b-a;
+      top: 0;
+        transform: rotate(-45deg);
+    }
+  }
+
+  .logo-home {
+    width: 29px;
+    height: 29px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background: url("../images/icon/menu.svg") no-repeat center/cover;
+    @include hidetext;
+  }
+
+  // * ==========================================================================
+  // * nav
+  // * ==========================================================================
+
+  nav {
+    width: 70px;
+    height: 100%;
+    padding: 0 0 7vh;
+    padding-top: 5vh;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    background-color: $color-black;
+
+    .gnav-main {
+      width: 70px;
+      height: 100%;
+      font-size: 0.875rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 69px;
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+
+      > li {
+        position: relative;
+        display: inline-block;
+        margin-top: 40px;
+        vertical-align: bottom;
+        writing-mode: vertical-rl;
+
+        &:after {
+          content: "";
+          display: block;
+          width: 18px;
+          height: 1px;
+          position: absolute;
+          bottom: -56.666%;
+          left: 26px;
+          background-color: $color-white;
+        }
+
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+
+        ＆.current {
+        }
+
+        @include min-width(1025px) {
+          &:hover {
+						>a{
+							color: $color-white;
+							opacity: 0.5;
+						}
+          }
+        }
+
+        > a {
+          display: block;
+          color: $color-white;
+          line-height: 70px;
+          font-size: map-get($fontsize, small-base);
+					transition: .2s;
+
+          > span {
+          }
+        }
+      }
+    }
+  }
+
+  .nav-text {
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    z-index: 10001;
+    color: $color-white;
+    opacity: 50%;
+    font-size: 2.3vw;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    @include roboto-txt;
+  }
+}
